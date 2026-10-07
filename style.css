@@ -10,6 +10,8 @@
     --font-hand: 'Caveat', cursive;
     --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 
+}
+
 *, *::before, *::after{ 
     box-sizing: border-box; 
 }
