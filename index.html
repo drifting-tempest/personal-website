@@ -11,6 +11,27 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
+        <div class="music-bar" id="musicBar">
+
+          <audio id="song" src="myfavsong.mp3" preload="metadata"></audio>
+
+          <button id="playBtn" type="button" aria-label="play">▶</button>
+
+          <div class="music-middle">
+            <p class="music-name">p l a y i n g : love me like you do - ellie goulding </p>
+
+            <div class="music-row">
+              <span id="currentTime">0:00</span>
+              <input type="range" id="progress" min="0" max="100" step="0.1" value="0" aria-label="song progress">
+              <span id="totalTime">0:00</span>
+            </div>
+          </div>
+
+          <button id="muteBtn" type="button" aria-label="mute">vol</button>
+          <input type="range" id="volume" min="0" max="100" value="50" aria-label="volume">
+
+        </div>
+
         <script>
 
           var theme = localStorage.getItem('theme');

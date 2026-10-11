@@ -130,3 +130,85 @@ themeBtn.addEventListener('click', function () {
     localStorage.setItem('theme', 'dark');
   }
 });
+
+
+var song = document.getElementById('song');
+var playBtn = document.getElementById('playBtn');
+var progress = document.getElementById('progress');
+var currentTimeText = document.getElementById('currentTime');
+var totalTimeText = document.getElementById('totalTime');
+var volumeSlider = document.getElementById('volume');
+var muteBtn = document.getElementById('muteBtn');
+
+song.volume = 0.5;
+
+
+function formatTime(seconds) {
+  var mins = Math.floor(seconds / 60);
+  var secs = Math.floor(seconds % 60);
+
+  if (secs < 10) {
+    secs = '0' + secs;
+  }
+
+  return mins + ':' + secs;
+}
+
+playBtn.addEventListener('click', function () {
+  if (song.paused) {
+    song.play();
+    playBtn.textContent = '❚❚';
+    playBtn.setAttribute('aria-label', 'pause');
+  } else {
+    song.pause();
+    playBtn.textContent = '▶';
+    playBtn.setAttribute('aria-label', 'play');
+  }
+});
+
+
+song.addEventListener('loadedmetadata', function () {
+  totalTimeText.textContent = formatTime(song.duration);
+});
+
+song.addEventListener('timeupdate', function () {
+
+  if (!song.duration) return;
+
+  var percent = (song.currentTime / song.duration) * 100;
+  progress.value = percent;
+  currentTimeText.textContent = formatTime(song.currentTime);
+});
+
+
+progress.addEventListener('input', function () {
+  var newTime = (progress.value / 100) * song.duration;
+  song.currentTime = newTime;
+});
+
+volumeSlider.addEventListener('input', function () {
+  song.volume = volumeSlider.value / 100;
+
+  if (volumeSlider.value == 0) {
+    muteBtn.textContent = 'mute';
+  } else {
+    muteBtn.textContent = 'vol';
+  }
+});
+
+muteBtn.addEventListener('click', function () {
+  if (song.muted) {
+    song.muted = false;
+    muteBtn.textContent = 'vol';
+  } else {
+    song.muted = true;
+    muteBtn.textContent = 'mute';
+  }
+});
+
+song.addEventListener('ended', function () {
+  playBtn.textContent = '▶';
+  playBtn.setAttribute('aria-label', 'play');
+  progress.value = 0;
+  currentTimeText.textContent = '0:00';
+});
