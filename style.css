@@ -536,3 +536,53 @@ a{
     100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
 
+
+:root[data-theme="dark"]{
+    --dark-raspberry:#f6bdd1;
+    --dusty-rose:#d99a98;
+    --soft-blossom:#5a1f3a;
+    --lavender-veil:#1a0e17;
+    --white-smoke:#2a1522;
+    --ink:#f3e3ee;
+    --paper-white:#1a0e17;
+}
+
+:root[data-theme="dark"] body{
+    background-image: linear-gradient(rgba(246,189,209,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(246,189,209,0.06) 1px, transparent 1px);
+}
+
+:root[data-theme="dark"] .paper,
+:root[data-theme="dark"] .cassette,
+:root[data-theme="dark"] .poem-card,
+:root[data-theme="dark"] .word-card{
+    border-color: rgba(246,189,209,0.22);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+:root[data-theme="dark"] .snow .dot{
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpolygon fill='%23f6bdd1' points='12,1 15,9 23,9 17,14 19,22 12,17.5 5,22 7,14 1,9 9,9'/%3E%3C/svg%3E");
+    filter: drop-shadow(0 0 3px rgba(246,189,209,0.6));
+}
+
+.theme-toggle{
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 10;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px dashed var(--dark-raspberry);
+    background: var(--white-smoke);
+    color: var(--dark-raspberry);
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    transform: rotate(-4deg);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.theme-toggle:hover{
+    transform: rotate(0deg);
+    background: var(--soft-blossom);
+}

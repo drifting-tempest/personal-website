@@ -69,3 +69,64 @@ var WORDS = ["threnody", "ephemeral", "evanescence", "sunstruck", "lullaby", "ci
     container.appendChild(dot);
   }
 })();
+
+// ofc i had completely forgotten about this thing in the starting and i just had a random datestamp in my html omg 
+
+(function showDateStamp() {
+  var el = document.getElementById('dateStamp');
+  if (!el) return;
+
+  var now = new Date();
+
+  var date = now.toLocaleDateString('en-US', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  }).toLowerCase();
+
+  var time = now.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit'
+  }).toLowerCase();
+
+  el.textContent = 'written on ' + date + ' at ' + time;
+})();
+
+
+//after stanning light mode for ages, now i HAVE to make a dark mode for mine
+
+var themeBtn = document.getElementById('themeToggle');
+var root = document.documentElement;
+
+function showTheme(theme) {
+  root.setAttribute('data-theme', theme);
+
+  if (theme === 'dark') {
+    themeBtn.textContent = '☀';
+    themeBtn.setAttribute('aria-label', 'switch to light mode');
+  } else {
+    themeBtn.textContent = '☾';
+    themeBtn.setAttribute('aria-label', 'switch to dark mode');
+  }
+}
+
+// the theme will stay the same as what user decided even after reloadng
+
+var currentTheme = root.getAttribute('data-theme');
+showTheme(currentTheme);
+
+themeBtn.addEventListener('click', function () {
+  var theme = root.getAttribute('data-theme');
+
+  if (theme === 'dark') {
+
+    showTheme('light');
+    localStorage.setItem('theme', 'light');
+  } 
+  
+  else {
+    showTheme('dark');
+    localStorage.setItem('theme', 'dark');
+  }
+});
