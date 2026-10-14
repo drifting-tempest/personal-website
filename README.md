@@ -8,7 +8,7 @@ This is my lil personal website (kinda like a webpage) containing some of my poe
 2. Pretty pink interface, notebook-style, and also with falling stars
 3. The unmodifiable-by-users checklist containing goals and to-dos
 
-Link (Live Demo): https://personal-website-rcn72r0fz-drifting-tempests-projects.vercel.app/
+Link (Live Demo): https://drifting-tempest.github.io/personal-website/
 
 Made with love,
 Sakura
